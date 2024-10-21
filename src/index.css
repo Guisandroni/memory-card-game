@@ -30,7 +30,7 @@ h1{
 
 }
 
-.CardContainer img{
+ img{
   transform:scale(1);
   animation: 2s hideImage linear;
   transition:  transform 0.5s;
@@ -54,3 +54,28 @@ h1{
   }
 }
 
+
+
+.frontCard{
+  position: absolute;
+
+  backface-visibility: hidden; /* Esconde o lado oposto */
+ }
+
+.frontCard  {
+  background-color: white; /* Cor de fundo para a frente (opcional) */
+  /* Inicialmente invertida */
+  
+  
+}
+
+.backCard img {
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Cor de fundo para o verso (opcional) */
+  transform: rotateY(180deg);
+}
+
+.card.flipped .CardContainer {
+  transform: rotateY(180deg); /* Virar a carta ao clicar */
+}

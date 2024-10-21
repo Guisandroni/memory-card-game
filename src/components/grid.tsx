@@ -8,11 +8,12 @@ export interface gridItem{
     stat:string,
 }
 
-export interface cardBack{
+export interface CardBack{
     id: number,
     img:string,
-    stat: string,
 }
+
+
 
 
 export function Grid(){
@@ -44,43 +45,46 @@ const [grid, setGrid] = useState<gridItem[]>([
    
 ].sort(() => Math.random() - 0.5));
 
-const [back, setBack] = useState<cardBack[]>([
-    {id:1, img: '../../public/images/card.png', stat:''},
-    {id:1, img: '../../public/images/card.png', stat:''},
-    {id:2, img: '../../public/images/card.png', stat:''},
-    {id:2, img: '../../public/images/card.png', stat:''},
-    {id:3, img: '../../public/images/card.png', stat:''},
-    {id:3, img: '../../public/images/card.png', stat:''},
-    {id:4, img: '../../public/images/card.png', stat:''},
-    {id:4, img: '../../public/images/card.png', stat:''},
-    {id:5, img: '../../public/images/card.png', stat:''},
-    {id:5, img: '../../public/images/card.png', stat:''},
-    {id:6, img: '../../public/images/card.png', stat:''},
-    {id:6, img: '../../public/images/card.png', stat:''},
-    {id:7, img:'../../public/images/card.png', stat:''},
-    {id:7, img: '../../public/images/card.png', stat:''},
-    {id:8, img: '../../public/images/card.png', stat:''},
-    {id:8, img: '../../public/images/card.png', stat:''},
-    {id:9, img: '../../public/images/card.png', stat:''},
-    {id:9, img: '../../public/images/card.png', stat:''},
-    {id:10, img: '../../public/images/card.png', stat:''},
-    {id:10, img: '../../public/images/card.png', stat:''},
+// const [back, setBack] = useState<cardBack[]>([
+//     {id:1, img: '../../public/images/card.png', stat:''},
+//     {id:1, img: '../../public/images/card.png', stat:''},
+//     {id:2, img: '../../public/images/card.png', stat:''},
+//     {id:2, img: '../../public/images/card.png', stat:''},
+//     {id:3, img: '../../public/images/card.png', stat:''},
+//     {id:3, img: '../../public/images/card.png', stat:''},
+//     {id:4, img: '../../public/images/card.png', stat:''},
+//     {id:4, img: '../../public/images/card.png', stat:''},
+//     {id:5, img: '../../public/images/card.png', stat:''},
+//     {id:5, img: '../../public/images/card.png', stat:''},
+//     {id:6, img: '../../public/images/card.png', stat:''},
+//     {id:6, img: '../../public/images/card.png', stat:''},
+//     {id:7, img:'../../public/images/card.png', stat:''},
+//     {id:7, img: '../../public/images/card.png', stat:''},
+//     {id:8, img: '../../public/images/card.png', stat:''},
+//     {id:8, img: '../../public/images/card.png', stat:''},
+//     {id:9, img: '../../public/images/card.png', stat:''},
+//     {id:9, img: '../../public/images/card.png', stat:''},
+//     {id:10, img: '../../public/images/card.png', stat:''},
+//     {id:10, img: '../../public/images/card.png', stat:''},
 
 
    
-])
+// ])
+
+const cardBack: CardBack = { id: 0, img: '../../public/images/card.png' };
+
 
 
     return (
 
         <div className="container">
             {grid.map((grid, index)=> (
-                <Card  key={index} grid={grid} />
+                <Card  key={index} grid={grid} back={cardBack} />
             ))}
 
-            {back.map((back, index) =>(
+            {/* {back.map((back, index) =>(
             <Card key={index} back={back}/>
-        ))}
+        ))} */}
         </div>
     )
 }
