@@ -1,36 +1,46 @@
-import { useState } from 'react';
-import {CardBack, gridItem} from './grid'
+import React from 'react';
+import { Box, Image } from '@chakra-ui/react';
+import { Card } from '../interfaces/interface';
 
-interface propGrid {
-    grid: gridItem,
-    
+interface CardGridProps {
+  card: Card;
+  handleChoice: (card: Card) => void;
+  flipped: boolean;
+  disabled: boolean;
 }
 
-interface propBack{
-    back: CardBack,
-}
+const CardGrid: React.FC<CardGridProps> = ({ card, handleChoice, flipped, disabled }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      handleChoice(card);
+    }
+  };
 
+  return (
+    <Box
+      onClick={handleClick}
+      w="100%"
+      h="0"
+      pb="100%"
+      position="relative"
+      cursor="pointer"
+    >
+      <Image
+        src={flipped ? card.src : 'public/images/card.png'}
+        alt="card"
+        position="absolute"
+        top="0"
+        left="0"
+        width="100%"
+        height="100%"
+        objectFit="cover"
+        borderRadius="8px"
+        boxShadow="lg"
+        transition="transform 0.3s"
+        _hover={{ transform: 'scale(1.05)' }}
+      />
+    </Box>
+  );
+};
 
-export function Card({grid, back}: propGrid & propBack){
-    const [isFlipped, setIsFlipped] = useState(false);
-   
-    const handleClick =  () => {
-       setIsFlipped(!isFlipped); // Alterna entre virado e não virado
-      console.log(handleClick)
-    };
-    return(
-        <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleClick}>
-            <div className="CardContainer"   >
-            <div className="frontCard">
-            <img src={grid.img} alt={`Card ${grid.id}`} />
-
-            </div>
-            <div className="backCard">
-            <img src={back.img} alt={`Back ${back.id}`}/>
-            </div>            
-        </div>
-        </div>
-
-    )
-}
-
+export default CardGrid;

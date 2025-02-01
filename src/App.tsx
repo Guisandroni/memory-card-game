@@ -1,17 +1,35 @@
-import { Grid } from "./components/grid"
+import { Box } from "@chakra-ui/react";
 
-function App() {
+import Board from "./pages/gameCard";
+
+
+export default function App() {
+
+  
+
 
 
   return (
-    <><h1>Memor-game</h1>
-    <div className="container">
-    
+    <Box
+      width="100vw" // 100% da largura da viewport
+      height="100vh" // 100% da altura da viewport
+      overflow="hidden" // Para evitar barras de rolagem
+      backgroundImage='url("public/images/kame.jpg")'
+      objectFit="cover"
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
 
-    <Grid/>
-    </div>
-    </>
+    >
+
+
+      <Box>
+
+   
+
+    <Board/>
+
+      </Box>
+    </Box>
   )
 }
-
-export default App
